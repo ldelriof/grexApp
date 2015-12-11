@@ -4,20 +4,21 @@ $(function() {
 var paramsObj = {};
 var in_zone = false;
 function init(){
-  advertise();
-
-  ble.startScan([], function(device) {
-	    logger(device.name+' '+device.rssi+'<br><br><br>');
-	    // logger(JSON.stringify(device));
-	},  function(error) {
-	    logger(JSON.stringify(error));
-	});
+    advertise();
+    monitor();
+ //    ble.startScan([], function(device) {
+ //        if(device.rssi < -70)
+ //    	    logger(device.advertising.kCBAdvDataServiceUUIDs+' '+device.name+' '+device.rssi+'<br><br><br>');
+	//     logger(JSON.stringify(device));
+	// },  function(error) {
+	//     logger(JSON.stringify(error));
+	// });
 
 }
 
 function advertise() {
     var uuid = 'DA5336AE-2042-453A-A57F-F80DD34DFCD9';
-    var identifier = 'advertisedBeacon';
+    var identifier = 'grexBeacon';
     var minor = 2000;
     var major = 5;
     var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
@@ -55,7 +56,81 @@ function advertise() {
 
 }
 
+function monitor() {
+
+
+    var delegate = new cordova.plugins.locationManager.Delegate();
+
+    delegate.didDetermineStateForRegion = function (pluginResult) {
+
+        // logger('[DOM] didDetermineStateForRegion: ' + JSON.stringify(pluginResult));
+
+        cordova.plugins.locationManager.appendToDeviceLog('[DOM] didDetermineStateForRegion: '
+            + JSON.stringify(pluginResult));
+    };
+
+    delegate.didStartMonitoringForRegion = function (pluginResult) {
+        // console.log('didStartMonitoringForRegion:', pluginResult);
+
+        // logger('didStartMonitoringForRegion:' + JSON.stringify(pluginResult));
+    };
+
+    delegate.didRangeBeaconsInRegion = function (pluginResult) {
+        var howmany = 0,
+            rssis = '',
+            beacons = pluginResult.beacons;
+        // logger(JSON.stringify(pluginResult.beacons) + '<br><br><br><br>')
+        beacons.forEach(function(beacon) {
+
+            rssis += beacon.rssi + ' ';
+
+            if(beacon.rssi > -65 && beacon.rssi < 0) {
+                howmany++
+            }
+        })
+        logger(rssis+'<br>howmany = '+howmany+'<br><br>');
+        rules(howmany);
+        // logger('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
+
+    };
+
+
+
+
+    var uuid = 'DA5336AE-2042-453A-A57F-F80DD34DFCD9';
+    var identifier = 'grexBeacon';
+    var minor = 2000;
+    var major = 5;
+    var beaconRegion
+    var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
+
+    cordova.plugins.locationManager.setDelegate(delegate);
+
+    // required in iOS 8+
+    cordova.plugins.locationManager.requestWhenInUseAuthorization(); 
+    // or cordova.plugins.locationManager.requestAlwaysAuthorization()
+
+    cordova.plugins.locationManager.startRangingBeaconsInRegion(beaconRegion)
+        .fail(console.error)
+        .done();
+
+
+}
 
 function logger(message) {
-  $(".log").prepend(message+"\r\n");
+  $(".log").html(message+"\r\n");
 }
+
+function rules(howmany) {
+    if(howmany > 0 && howmany < 2) {
+        $("body").css({background : "green"})
+    } else if (howmany > 1) {
+        $("body").css({background : "yellow"})
+    } else {
+        $("body").css({background : "white"})
+    }
+
+
+}
+
+

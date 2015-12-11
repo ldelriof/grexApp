@@ -48,13 +48,22 @@ module.exports = [
         "clobbers": [
             "ble"
         ]
+    },
+    {
+        "file": "plugins/com.attendease.ibeacons/www/AttendeaseBeacons.js",
+        "id": "com.attendease.ibeacons.AttendeaseBeacons",
+        "clobbers": [
+            "AttendeaseBeacons"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "com.unarin.cordova.beacon": "3.3.0",
-    "cordova-plugin-ble-central": "1.0.3"
+    "cordova-plugin-ble-central": "1.0.3",
+    "cordova-plugin-whitelist": "1.2.0",
+    "com.attendease.ibeacons": "0.4.2"
 }
 // BOTTOM OF METADATA
 });

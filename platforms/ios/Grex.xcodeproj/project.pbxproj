@@ -47,6 +47,8 @@
 		96B53AEEC9D84253A8CEDC8D /* BLECentralPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = FE16749FE2A14B1AA9098EC0 /* BLECentralPlugin.m */; };
 		6CE9EA59632F4F5080BF0287 /* CBPeripheral+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F713F0203140B29C8DDA14 /* CBPeripheral+Extensions.m */; };
 		069EE28ABA7740FC9D113D15 /* BLECommandContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A009DF7E1A40FA9D58305A /* BLECommandContext.m */; };
+		15A4D329B8A1413C9945BE1C /* AttendeaseBeacons.m in Sources */ = {isa = PBXBuildFile; fileRef = 34188C335F4C4F42968E4793 /* AttendeaseBeacons.m */; };
+		383D6C6142D640A69E60BB2A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7E18CE81A14D6DA794351B /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,9 @@
 		A776DFAA7FAE4B8A8ECAA3BC /* BLECentralPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BLECentralPlugin.h"; path = "cordova-plugin-ble-central/BLECentralPlugin/BLECentralPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		B735E0377A624754BAE3DE43 /* CBPeripheral+Extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CBPeripheral+Extensions.h"; path = "cordova-plugin-ble-central/BLECentralPlugin/CBPeripheral+Extensions.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		3F2C8957DDB6453089C4DD39 /* BLECommandContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "BLECommandContext.h"; path = "cordova-plugin-ble-central/BLECentralPlugin/BLECommandContext.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		34188C335F4C4F42968E4793 /* AttendeaseBeacons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AttendeaseBeacons.m"; path = "com.attendease.ibeacons/AttendeaseBeacons.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		FA99AE696ED1443C98AB0CC9 /* AttendeaseBeacons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AttendeaseBeacons.h"; path = "com.attendease.ibeacons/AttendeaseBeacons.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		AF7E18CE81A14D6DA794351B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +142,7 @@
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				8F23C36171A64E06AEA17193 /* CoreBluetooth.framework in Frameworks */,
 				9382C708C5A74230B374CB33 /* CoreLocation.framework in Frameworks */,
+				383D6C6142D640A69E60BB2A /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +217,7 @@
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
 				34DF81E272944F498689F641 /* CoreBluetooth.framework */,
 				55116DDCC1D948A8862C4887 /* CoreLocation.framework */,
+				AF7E18CE81A14D6DA794351B /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -238,6 +245,8 @@
 				A776DFAA7FAE4B8A8ECAA3BC /* BLECentralPlugin.h */,
 				B735E0377A624754BAE3DE43 /* CBPeripheral+Extensions.h */,
 				3F2C8957DDB6453089C4DD39 /* BLECommandContext.h */,
+				34188C335F4C4F42968E4793 /* AttendeaseBeacons.m */,
+				FA99AE696ED1443C98AB0CC9 /* AttendeaseBeacons.h */,
 			);
 			name = Plugins;
 			path = Grex/Plugins;
@@ -433,6 +442,7 @@
 				96B53AEEC9D84253A8CEDC8D /* BLECentralPlugin.m in Sources */,
 				6CE9EA59632F4F5080BF0287 /* CBPeripheral+Extensions.m in Sources */,
 				069EE28ABA7740FC9D113D15 /* BLECommandContext.m in Sources */,
+				15A4D329B8A1413C9945BE1C /* AttendeaseBeacons.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
