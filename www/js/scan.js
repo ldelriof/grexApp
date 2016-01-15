@@ -76,26 +76,21 @@ function monitor() {
     };
 
     delegate.didRangeBeaconsInRegion = function (pluginResult) {
-        var howmany = 0,
-            rssis = '',
-            beacons = pluginResult.beacons;
-        // logger(JSON.stringify(pluginResult.beacons) + '<br><br><br><br>')
-        beacons.forEach(function(beacon) {
+        var beacons = pluginResult.beacons;
+        // // logger(JSON.stringify(pluginResult.beacons) + '<br><br><br><br>')
+        // beacons.forEach(function(beacon) {
 
-            rssis += beacon.rssi + ' ';
+        //     rssis += beacon.rssi + ' ';
 
-            if(beacon.rssi > -65 && beacon.rssi < 0) {
-                howmany++
-            }
-        })
-        logger(rssis+'<br>howmany = '+howmany+'<br><br>');
-        rules(howmany);
+        //     if(beacon.rssi > -65 && beacon.rssi < 0) {
+        //         found++
+        //     }
+        // })
+        // logger(rssis+'<br>found = '+found+'<br><br>');
+        rules(beacons);
         // logger('[DOM] didRangeBeaconsInRegion: ' + JSON.stringify(pluginResult));
 
     };
-
-
-
 
     var uuid = 'DA5336AE-2042-453A-A57F-F80DD34DFCD9';
     var identifier = 'grexBeacon';
@@ -121,16 +116,66 @@ function logger(message) {
   $(".log").html(message+"\r\n");
 }
 
-function rules(howmany) {
-    if(howmany > 0 && howmany < 2) {
-        $("body").css({background : "green"})
-    } else if (howmany > 1) {
-        $("body").css({background : "yellow"})
-    } else {
-        $("body").css({background : "white"})
+function rules(beacons) {
+    var near = 0, far = 0, rssis = '', color = '';
+    beacons.forEach(function(beacon) {
+        rssis += beacon.rssi + ' ';
+
+        if(beacon.rssi >= -65 && beacon.rssi < 0) {
+            near++
+        }
+        if(beacon.rssi >= -100 && beacon.rssi < -65) {
+            far++
+        }
+
+    });
+
+    if(near == 2 && far == 4) {
+        color = "green"
+    }
+    else if(near < 2 && (far <= 4 && far >= 0) ) {
+        color = "yellow"
+    }
+    else {
+        color = "red"
     }
 
+    $("body").css({background : color})
 
 }
+
+
+
+function rules(beacons) {
+    var near = 0, far = 0, rssis = '', color = '';
+    beacons.forEach(function(beacon) {
+        rssis += beacon.rssi + ' ';
+
+        if(beacon.rssi >= -65 && beacon.rssi < 0) {
+            near++
+        }
+        if(beacon.rssi >= -100 && beacon.rssi < -65) {
+            far++
+        }
+
+    });
+
+    if(near == 2 && far == 4) {
+        color = "green"
+    }
+    else if(near < 2 && (far <= 4 && far >= 0) ) {
+        color = "yellow"
+    }
+    else {
+        color = "red"
+    }
+
+    $("body").css({background : color})
+
+}
+
+
+// las traes ---- infecciones
+
 
 
