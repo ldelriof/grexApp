@@ -8,11 +8,11 @@ function init(){
     monitor();
  //    ble.startScan([], function(device) {
  //        if(device.rssi < -70)
- //         logger(device.advertising.kCBAdvDataServiceUUIDs+' '+device.name+' '+device.rssi+'<br><br><br>');
-    //     logger(JSON.stringify(device));
-    // },  function(error) {
-    //     logger(JSON.stringify(error));
-    // });
+ //    	    logger(device.advertising.kCBAdvDataServiceUUIDs+' '+device.name+' '+device.rssi+'<br><br><br>');
+	//     logger(JSON.stringify(device));
+	// },  function(error) {
+	//     logger(JSON.stringify(error));
+	// });
 
 }
 
